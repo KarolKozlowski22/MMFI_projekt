@@ -1,7 +1,14 @@
-*
-
-!*.pdf
-!*.tex
-!README.md
-!.gitignore
-!.vscode/
+# Ignoruj pliki wyjściowe LaTeX
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.gz
+*.toc
+*.vrb
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
