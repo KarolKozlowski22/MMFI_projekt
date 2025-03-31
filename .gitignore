@@ -1,0 +1,7 @@
+*
+
+!*.pdf
+!*.tex
+!README.md
+!.gitignore
+!.vscode/
