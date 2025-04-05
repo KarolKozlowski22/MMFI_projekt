@@ -4,9 +4,10 @@
 \usepackage{listings}
 \usepackage[utf8]{inputenc} 
 \usepackage[polish]{babel}  
+\usepackage[T1]{fontenc}
 \usepackage{verbatim}
 
-\title{Zastosowanie metod formalnych do weryfikacji struktur wskaźnikowych w systemie PVS}
+\title{Zastosowanie metod formalnych}
 \author{Karol Kozlowski,}
 \institute{Wydzial elektryczny, Politechnika Warszawska}
 \date{\today}
@@ -22,35 +23,37 @@
 \end{frame}
 
 \section{Wprowadzenie do metod formalnych}
-\begin{frame}{Metody formalne w inżynierii oprogramowania}
-\begin{block}{Dlaczego metody formalne?}
+\begin{frame}{Czym sa metody formalne?}
+\begin{block}{Definicja}
+  Metody formalne to techniki matematyczne służące do:
 \begin{itemize}
-\item Krytyczne systemy: medyczne, kosmiczne, transportowe
-\item Koszt błędów: katastrofy vs koszt wdrożenia
-\item Przykład: NASA i system PVS
+\item Specyfikacji - precyzyjnego opisu systemów za pomocą języków matematycznych (np. logika temporalna, rachunek procesów)
+\item Weryfikacji - dowodzenia poprawności systemów poprzez np. model checking (np. narzędzie SPIN) lub dowody twierdzeń (np. Coq, Isabelle)
+\item Automatyzacji analizy  wykrywania sprzeczności lub luk w projektach na etapie modelowania (np. weryfikacja protokołów kryptograficznych)
 \end{itemize}
+Wiecej na ten temat mozna znalezc w \cite{spin_needham_schroeder}.
 \end{block}
-
-\begin{exampleblock}{Kluczowe zalety}
-\begin{itemize}
-\item Pełna weryfikacja własności
-\item Wykrywanie wycieków pamięci
-\item Gwarancja niezmienników strukturalnych
-\end{itemize}
-\end{exampleblock}
 \end{frame}
 
-\section{Wprowadzenie do PVS}
-\begin{frame}[fragile]{System PVS w pigułce}
-
-
+\begin{frame}
+\begin{exampleblock}{Kluczowe zalety}
 \begin{itemize}
-\item Logika wyższego rzędu
-\item Mechanizm dowodzenia twierdzeń
-\item Automatyczne generowanie TCC (Type Correctness Conditions)
-\item Parametryzacja teorii
+\item Formalne gwarancje poprawności - zapewnienie matematycznie udowodnionej poprawności systemów, szczególnie w przypadku wymagań bezpieczeństwa.
+\item Precyzyjna specyfikacja wymagań - eliminacja niejednoznaczności dzięki matematycznym modelom i notacjom.
+\item Wykrywanie złożonych błędów - identyfikacja problemów takich jak zakleszczenia (deadlocks) czy warunki wyścigu (race conditions), które trudno wykryć tradycyjnymi metodami testowania.
 \end{itemize}
+Wiecej na ten temat mozna znalezc w \cite{wojnicki2019weryfikacja}.
+\end{exampleblock}
 
+\end{frame}
+
+\section{Wykorzystanie metod formalnych w systemie PVS}
+\subsection{Wprowadzenie do systemu PVS}
+\begin{frame}[fragile]{System PVS w pigułce}
+  System PVS służy do opracowania i weryfikacji specyfikacji opisujących
+  różne zagadnienia. PVS posiada rozbudowaną składnię i umożliwia operowanie w
+  logice wyższego rzędu, definiowanie własnych typów i podtypów danych oraz
+  tworzenie teorii parametryzowanych \cite{paper}.
 
 \begin{verbatim}
   pointer_env [P: TYPE, T: TYPE]: THEORY
@@ -61,95 +64,110 @@
 \end{verbatim}
 \end{frame}
 
-\section{Wyzwania dla struktur wskaźnikowych}
+\subsection{Jaki problem rozwiazuje system PVS?}
 \begin{frame}{Problem: Weryfikacja struktur dynamicznych}
 \begin{alertblock}{Główne wyzwania}
-\begin{itemize}
-\item Dynamiczna alokacja pamięci
-\item Aliasing wskaźników
-\item Zachowanie niezmienników po operacjach
-\item Cykliczne struktury danych
+  \begin{itemize}
+  \item \textbf{Złożoność struktur wskaźnikowych}:
+  \begin{itemize}
+      \item Wycieki pamięci
+      \item Nieprawidłowe dereferencje
+      \item Zakleszczenia w systemach współbieżnych
+  \end{itemize}
+  
+  \item \textbf{Niejednoznaczność specyfikacji}:
+  \begin{itemize}
+      \item Niewystarczalność logiki pierwszego rzędu
+      \item Potrzeba logiki wyższego rzędu (PVS)
+  \end{itemize}
+  
+  \item \textbf{Krytyczne zastosowania}:
+  \begin{itemize}
+      \item Systemy sterowania (metro, koleje)
+      \item Aplikacje medyczne
+      \item Systemy awioniki i kosmiczne
+  \end{itemize}
 \end{itemize}
+
+Wiecej na ten temat mozna znalezc w \cite{paper}.
 \end{alertblock}
-
-\begin{exampleblock}{Przykładowa specyfikacja listy}
-\begin{itemize}
-\item $\forall l_1 \neq l_2 \Rightarrow \neg \exists n \in (l_1 \cap l_2)$
-\item $\forall p \in \text{pointer} \Rightarrow \exists! l: p \in l$
-\end{itemize}
-\end{exampleblock}
 \end{frame}
 
-\section{Metodologia pracy}
-\begin{frame}[fragile]{Proces weryfikacji w PVS}
-\begin{enumerate}
-\item Modelowanie środowiska wskaźnikowego
-\item Definicja niezmienników strukturalnych
-\item Generowanie i dowodzenie TCC
-\item Specyfikacja operacji (predykaty)
-\item Dowód zachowania niezmienników
-\end{enumerate}
+\subsection{Rozwiazanie PVS}
+\begin{frame}{Rozwiazanie PVS}
 
-\begin{verbatim}
-
-list_member?(l: pointer, vl: list): bool = 
-  IF nil?(vl) THEN false
-  ELSE l = vl OR list_member?(l, next(vl))
-  ENDIF
-\end{verbatim}
+    \begin{itemize}
+      \item Formalna specyfikacja niezmienników
+      \item Automatyczna weryfikacja warunków spójności
+      \item Półautomatyczne dowodzenie poprawności
+    \end{itemize}
 \end{frame}
 
-\section{Studium przypadku: lista}
-\begin{frame}[fragile]{Studium przypadku: Lista jednokierunkowa}
-\begin{block}{Kluczowe niezmienniki}
-\begin{itemize}
-\item Spójność typów (TCC)
-\item Rozłączność list
-\item Pełna pokrycie pamięci
-\item Brak cykli
-\end{itemize}
-\end{block}
+\subsection{Formalna specyfikacja niezmiennikow}
+\begin{frame}[fragile]{Przyklad}
+  \begin{exampleblock}{Przyklad}
+    
+  \begin{verbatim}
+    accessed_disjoint?(accessed? : pred[pointer[P]]) : 
+    boolean =
+    FORALL(v11,v12 : (valid_finseq_list?)) :
+       (accessed?(v11) AND accessed?(v12) AND v11 
+       /= v12 =>
+        FORALL(1 : pointer[P]) : value?(1) =>
+        NOT list_member?(1,v11) OR NOT 
+        list_member?(1,v12))
+    \end{verbatim}
+  \end{exampleblock}
 
-\begin{exampleblock}{Przykładowe twierdzenie}
-\begin{verbatim}
-  member_last: LEMMA 
-  FORALL (vl: list): 
-    NOT nil?(vl) => list_member?(last(vl), vl)
-\end{verbatim}
-\end{exampleblock}
 \end{frame}
 
-\section{Wyzwania i ograniczenia}
-\begin{frame}{Wyzwania i wnioski}
-\begin{alertblock}{Główne trudności}
-\begin{itemize}
-\item Czasochłonność dowodów (do 1 tygodnia na predykat)
-\item Ograniczenia PVS w pracy z wieloma teoriami
-\item Trudności w automatyzacji dla grafów
-\end{itemize}
-\end{alertblock}
+\subsection{Automatyczna weryfikacja warunkow spójności}
 
+\begin{frame}[fragile]{Przyklad}
+  \begin{exampleblock}{TCC1 dla niepustosci listy, TCC2 dla zachowania typu w rekurencji, TCC3 dla warunku stopu rekurencji}
+ 
+    \begin{verbatim}
+      last_TCC1: OBLIGATION 
+      FORALL (vl: (valid_finseq_list?)): NOT empty?(vl)
+    \end{verbatim}
+
+    \begin{verbatim}
+      last_TCC2: OBLIGATION 
+      FORALL (vl: (valid_finseq_list?)): 
+        length(vl) > 1 IMPLIES valid_finseq_list?(tail(vl))
+    \end{verbatim}
+
+    \begin{verbatim}
+      last_TCC3: OBLIGATION 
+      FORALL (vl: (valid_finseq_list?)): 
+        length(vl) > 1 IMPLIES length(tail(vl)) < length(vl)
+    \end{verbatim}
+  \end{exampleblock}
+    
+\end{frame}
+
+\subsection{Półautomatyczne dowodzenie poprawności}
+
+% \begin{frame}[fragile]{Przykladdd}
+
+% \end{frame}
+
+
+\subsection{Podsumowanie}
+\begin{frame}
 \begin{block}{Podsumowanie}
 \begin{itemize}
-\item Metoda skuteczna dla list i drzew
-\item Wymaga dużego nakładu pracy
-\item Obiecujące wyniki dla systemów krytycznych
+\item Metoda skuteczna dla list i drzew.
+\item Wymaga dużego nakładu pracy.
+\item Obiecujące wyniki dla systemów krytycznych.
 \end{itemize}
 \end{block}
 \end{frame}
 
 \begin{frame}{Bibliografia}
-\begin{thebibliography}{9}
-\bibitem{pvs} 
-S. Owre et al. 
-\emph{PVS System Guide}. 
-SRI International, 1999.
+  \bibliographystyle{plain} 
+  \bibliography{bibliografia} 
 
-\bibitem{paper} 
-S. Poreda. 
-\emph{Wykorzystanie metod formalnych do specyfikacji struktur wskaźnikowych}. 
-Uniwersytet Warszawski, 2023.
-\end{thebibliography}
 \end{frame}
 
 \end{document}
