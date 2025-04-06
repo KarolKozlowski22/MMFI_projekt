@@ -2,6 +2,8 @@
 \usetheme{Warsaw}
 \usepackage{graphicx}
 \usepackage{listings}
+\usepackage{verbatim}
+
 \usepackage[utf8]{inputenc} 
 \usepackage[polish]{babel}  
 \usepackage[T1]{fontenc}
@@ -164,10 +166,128 @@ Wiecej na ten temat mozna znalezc w \cite{paper}.
 \end{block}
 \end{frame}
 
-\begin{frame}{Bibliografia}
-  \bibliographystyle{plain} 
-  \bibliography{bibliografia} 
-
+\section{Zastosowanie metod formalnych: TLA+}
+\begin{frame}{Czym jest TLA+?}
+  \begin{itemize}
+      \item TLA+ (Temporal Logic of Actions) - język specyfikacji formalnej opracowany przez Lesliego Lamporta.
+      \item Służy do opisu systemów współbieżnych i rozproszonych.
+      \item System definiowany jako zbiór zmiennych i akcji - przejść między stanami.
+      \item Deklaratywny - skupia się na zachowaniu, nie na implementacji.
+      \item Bazuje na logice temporalnej i matematyce zbiorów.
+  \end{itemize}
 \end{frame}
+
+\begin{frame}{Narzędzie TLC i model checking}
+  \begin{itemize}
+      \item Weryfikacja poprawności specyfikacji odbywa się z użyciem narzędzia TLC.
+      \item TLC używa techniki model checking:
+      \begin{itemize}
+          \item automatyczne przeszukiwanie przestrzeni stanów,
+          \item sprawdzanie właściwości bezpieczeństwa i ciągłości.
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Metoda 1: Modelowanie matematyczne (FIFO)}
+  \textbf{Fragment specyfikacji bufora w TLA+:}
+  \vspace{0.5em}
+
+  \begin{verbatim}
+VARIABLE queue
+
+Init == queue = << >>
+
+Enq(x) == queue' = Append(queue, x)
+
+Deq == /\ queue # << >>
+       /\ queue' = Tail(queue)
+  \end{verbatim}
+
+  \vspace{0.1em}
+  \begin{itemize}
+    \item Bufor jako lista (\texttt{queue}).
+    \item Akcje opisują przejścia między stanami.
+  \end{itemize}
+\end{frame}
+
+  
+  
+\begin{frame}[fragile]{Metoda 2: Inwariant bezpieczeństwa}
+  \textbf{Fragment definicji inwariantu w TLA+:}
+  \vspace{0.5em}
+
+  \begin{verbatim}
+TypeInvariant ==
+  /\ queue \in Seq(Int)
+  /\ Len(queue) >= 0
+
+Inv == TypeInvariant
+  \end{verbatim}
+
+  \vspace{0.1em}
+  \begin{itemize}
+    \item Bufor jest sekwencją liczb całkowitych.
+    \item Długość bufora nie może być ujemna.
+    \item Inwarianty są sprawdzane automatycznie przez TLC.
+    \item Chronią przed błędami, np. usunięciem z pustej kolejki.
+  \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}[fragile]{Metoda 3: Własności temporalne}
+  \textbf{Fragment specyfikacji własności temporalnych w TLA+:}
+  \vspace{0.5em}
+
+  \begin{verbatim}
+Safety == [](Len(queue) >= 0)
+
+Liveness == <>(queue = << >>)
+  \end{verbatim}
+
+  \vspace{0.1em}
+  \begin{itemize}
+    \item \texttt{Safety} (bezpieczeństwo): długość bufora nigdy nie jest ujemna.
+    \item \texttt{Liveness} (ciągłość): bufor w końcu się opróżni.
+    \item Temporalne właściwości opisują zachowanie w czasie.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Zastosowania TLA+}
+  \begin{itemize}
+      \item Firmy: Amazon, Microsoft, Google.
+      \item Projektowanie i weryfikacja systemów:
+      \begin{itemize}
+          \item rozproszonych,
+          \item bazodanowych,
+          \item komunikacyjnych,
+          \item chmurowych.
+      \end{itemize}
+      \item Identyfikacja błędów przed implementacją - kluczowa dla systemów krytycznych.
+  \end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}{Bibliografia}
+  \scriptsize
+  \begin{thebibliography}{9}
+  
+    \bibitem{lamport2002specifying}
+    Leslie Lamport, \emph{Specifying Systems: The TLA+ Language and Tools for Hardware and Software Engineers}, Addison-Wesley, 2002.
+  
+    \bibitem{newcombe2015amazon}
+    Chris Newcombe et al., \emph{How Amazon Web Services Uses Formal Methods}, Communications of the ACM, 2015.
+  
+    \bibitem{konnov2019tla}
+    Igor Konnov, Jure Kukovec, Thanh-Hai Tran, \emph{TLA+ Model Checking Made Symbolic}, CAV 2019.
+  
+    \bibitem{wayne2018practical}
+    Hillel Wayne, \emph{Practical TLA+: Planning Driven Development}, Lospinato Books, 2018.
+    
+  \end{thebibliography}
+\end{frame}
+
 
 \end{document}
