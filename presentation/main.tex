@@ -265,104 +265,6 @@ Liveness == <>(queue = << >>)
   \end{itemize}
 \end{frame}
 
-\section{Metody formalne w systemach wbudowanych}
-\begin{frame}{Metody formalne w systemach wbudowanych}
-  \begin{itemize}
-    \item Metody formalne są kluczowe dla niezawodności i bezpieczeństwa systemów wbudowanych.
-    \item Systemy wbudowane działają w środowiskach krytycznych, takich jak motoryzacja, medycyna czy lotnictwo.
-    \item Wykorzystanie metod formalnych umożliwia:
-      \begin{itemize}
-        \item Precyzyjne modelowanie zachowań systemów.
-        \item Weryfikację zgodności z rygorystycznymi normami.
-        \item Walidację poprawności działania w różnych scenariuszach.
-      \end{itemize}
-    \item Zapobiega awariom, które mogą prowadzić do poważnych konsekwencji.
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Metoda RT-EFSM – Wprowadzenie}
-  \begin{block}{Czym jest RT-EFSM?}
-    Rozszerzona Maszyna Stanów Skończonych Czasu Rzeczywistego (RT-EFSM) to formalny model stosowany do testowania oprogramowania wbudowanego czasu rzeczywistego,
-    łączący elementy tradycyjnych FSM i EFSM z aspektami czasowymi.
-  \end{block}
-  \begin{block}{Kluczowe cechy modelu RT-EFSM}
-    \begin{itemize}
-      \item \textbf{Stany (\(S^*\))}
-      \item \textbf{Zdarzenia wejściowe i wyjściowe (\(I, O\))}
-      \item \textbf{Warunki strażnicze (\(C\))}
-      \item \textbf{Zmienne środowiskowe (\(V\))}
-      \item \textbf{Globalny zegar (\(L\))}
-    \end{itemize}
-  \end{block}
-\end{frame}
-
-\begin{frame}{Zastosowanie RT-EFSM w Testowaniu Systemów Wbudowanych}
-  \begin{block}{Praktyczne zastosowania}
-    Metoda RT-EFSM została skutecznie zastosowana w projektach takich jak testowanie systemu nawigacji bezwładnościowo-GPS dla lotnictwa,
-    poprawiając jakość i niezawodność oprogramowania.
-  \end{block}
-
-  \begin{block}{Proces testowania RT-EFSM}
-    \begin{itemize}
-      \item Tworzenie klas równoważności przejść z ograniczeniami czasowymi.
-      \item Generowanie drzew scenariuszy testowych i sekwencji testowych.
-      \item Definiowanie przypadków testowych według kryteriów pokrycia.
-    \end{itemize}
-  \end{block}
-\end{frame}
-
-\begin{frame}{Sieci Petriego – Podstawy i Zalety}
-  \begin{block}{Czym są Sieci Petriego?}
-    Sieci Petriego (Petri Nets) to formalny model matematyczny używany do modelowania i weryfikacji systemów współbieżnych oraz czasowo-zależnych. Składają się z:
-  \begin{itemize}
-    \item \textbf{Miejsc (Places)} – reprezentujących stany lub zasoby.
-    \item \textbf{Tranzycji (Transitions)} – przedstawiających zdarzenia lub akcje.
-    \item \textbf{Łuków (Arcs)} – określających relacje pomiędzy miejscami i tranzycjami.
-    \item \textbf{Tokenów} – wskazujących aktualny stan systemu.
-  \end{itemize}
-  \end{block}
-\end{frame}
-
-\begin{frame}{Zastosowania Sieci Petriego w systemach wbudowanych}
-  \begin{block}{Przykłady zastosowań}
-    \begin{itemize}
-      \item \textbf{Kontrolery systemów krytycznych} – np. kontroler świateł drogowych, który wymaga zapewnienia, że zielone światła nie świecą się jednocześnie w przecinających się kierunkach.
-      \item \textbf{Weryfikacja bezpieczeństwa} – narzędzia jak CPN Tools pozwalają sprawdzić zgodność systemu z zadanymi właściwościami bezpieczeństwa.
-      \item \textbf{Wczesna weryfikacja} – możliwość formalnego potwierdzenia poprawności na wczesnych etapach projektowania systemu, co znacząco redukuje koszty.
-    \end{itemize}
-  \end{block}
-\end{frame}
-
-\begin{frame}{Metoda B – Wprowadzenie}
-  \begin{block}{Czym jest Metoda B?}
-    Metoda B to formalna metoda służąca do specyfikacji, projektowania i kodowania systemów oprogramowania. Bazuje na:
-    \begin{itemize}
-      \item Matematycznej teorii zbiorów Zermelo-Fraenkla.
-      \item Logice predykatów pierwszego rzędu.
-    \end{itemize}
-  \end{block}
-  
-  \begin{block}{Kluczowe elementy metody B}
-  \begin{itemize}
-    \item \textbf{Specyfikacja i projektowanie}
-    \item \textbf{Uściślenie (Refinement)}
-    \item \textbf{Dowody matematyczne}
-    \item \textbf{Język B}
-  \end{itemize}
-  \end{block}
-\end{frame}
-
-\begin{frame}{Zastosowania metody B w systemach wbudowanych}
-  \begin{block}{Główne zastosowania}
-  \begin{itemize}
-    \item \textbf{Bezpieczne systemy wbudowane}
-    \item \textbf{Jądro separacyjne}
-    \item \textbf{Dowody poprawności}
-    \item \textbf{Prototypowanie}
-  \end{itemize}
-  \end{block}
-\end{frame}
-
 \section{Zastosowanie metod formalnych w kolejnictwie}
 \subsection{Dlaczego warto?}
 \begin{frame}
@@ -575,6 +477,104 @@ Czasochłonne, manualne \\
 \begin{block}{Przyszłe kierunki}
 Integracja metod (np. Model Checking + Sieci Petriego)
 \end{block}
+\end{frame}
+
+\section{Metody formalne w systemach wbudowanych}
+\begin{frame}{Metody formalne w systemach wbudowanych}
+  \begin{itemize}
+    \item Metody formalne są kluczowe dla niezawodności i bezpieczeństwa systemów wbudowanych.
+    \item Systemy wbudowane działają w środowiskach krytycznych, takich jak motoryzacja, medycyna czy lotnictwo.
+    \item Wykorzystanie metod formalnych umożliwia:
+      \begin{itemize}
+        \item Precyzyjne modelowanie zachowań systemów.
+        \item Weryfikację zgodności z rygorystycznymi normami.
+        \item Walidację poprawności działania w różnych scenariuszach.
+      \end{itemize}
+    \item Zapobiega awariom, które mogą prowadzić do poważnych konsekwencji.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Metoda RT-EFSM – Wprowadzenie}
+  \begin{block}{Czym jest RT-EFSM?}
+    Rozszerzona Maszyna Stanów Skończonych Czasu Rzeczywistego (RT-EFSM) to formalny model stosowany do testowania oprogramowania wbudowanego czasu rzeczywistego,
+    łączący elementy tradycyjnych FSM i EFSM z aspektami czasowymi.
+  \end{block}
+  \begin{block}{Kluczowe cechy modelu RT-EFSM}
+    \begin{itemize}
+      \item \textbf{Stany (\(S^*\))}
+      \item \textbf{Zdarzenia wejściowe i wyjściowe (\(I, O\))}
+      \item \textbf{Warunki strażnicze (\(C\))}
+      \item \textbf{Zmienne środowiskowe (\(V\))}
+      \item \textbf{Globalny zegar (\(L\))}
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Zastosowanie RT-EFSM w Testowaniu Systemów Wbudowanych}
+  \begin{block}{Praktyczne zastosowania}
+    Metoda RT-EFSM została skutecznie zastosowana w projektach takich jak testowanie systemu nawigacji bezwładnościowo-GPS dla lotnictwa,
+    poprawiając jakość i niezawodność oprogramowania.
+  \end{block}
+
+  \begin{block}{Proces testowania RT-EFSM}
+    \begin{itemize}
+      \item Tworzenie klas równoważności przejść z ograniczeniami czasowymi.
+      \item Generowanie drzew scenariuszy testowych i sekwencji testowych.
+      \item Definiowanie przypadków testowych według kryteriów pokrycia.
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Sieci Petriego – Podstawy i Zalety}
+  \begin{block}{Czym są Sieci Petriego?}
+    Sieci Petriego (Petri Nets) to formalny model matematyczny używany do modelowania i weryfikacji systemów współbieżnych oraz czasowo-zależnych. Składają się z:
+  \begin{itemize}
+    \item \textbf{Miejsc (Places)} – reprezentujących stany lub zasoby.
+    \item \textbf{Tranzycji (Transitions)} – przedstawiających zdarzenia lub akcje.
+    \item \textbf{Łuków (Arcs)} – określających relacje pomiędzy miejscami i tranzycjami.
+    \item \textbf{Tokenów} – wskazujących aktualny stan systemu.
+  \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Zastosowania Sieci Petriego w systemach wbudowanych}
+  \begin{block}{Przykłady zastosowań}
+    \begin{itemize}
+      \item \textbf{Kontrolery systemów krytycznych} – np. kontroler świateł drogowych, który wymaga zapewnienia, że zielone światła nie świecą się jednocześnie w przecinających się kierunkach.
+      \item \textbf{Weryfikacja bezpieczeństwa} – narzędzia jak CPN Tools pozwalają sprawdzić zgodność systemu z zadanymi właściwościami bezpieczeństwa.
+      \item \textbf{Wczesna weryfikacja} – możliwość formalnego potwierdzenia poprawności na wczesnych etapach projektowania systemu, co znacząco redukuje koszty.
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Metoda B – Wprowadzenie}
+  \begin{block}{Czym jest Metoda B?}
+    Metoda B to formalna metoda służąca do specyfikacji, projektowania i kodowania systemów oprogramowania. Bazuje na:
+    \begin{itemize}
+      \item Matematycznej teorii zbiorów Zermelo-Fraenkla.
+      \item Logice predykatów pierwszego rzędu.
+    \end{itemize}
+  \end{block}
+  
+  \begin{block}{Kluczowe elementy metody B}
+  \begin{itemize}
+    \item \textbf{Specyfikacja i projektowanie}
+    \item \textbf{Uściślenie (Refinement)}
+    \item \textbf{Dowody matematyczne}
+    \item \textbf{Język B}
+  \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Zastosowania metody B w systemach wbudowanych}
+  \begin{block}{Główne zastosowania}
+  \begin{itemize}
+    \item \textbf{Bezpieczne systemy wbudowane}
+    \item \textbf{Jądro separacyjne}
+    \item \textbf{Dowody poprawności}
+    \item \textbf{Prototypowanie}
+  \end{itemize}
+  \end{block}
 \end{frame}
 
 \begin{frame}{Bibliografia}
