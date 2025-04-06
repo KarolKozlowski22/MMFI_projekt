@@ -16,11 +16,11 @@
 
 \begin{document}
 
-\begin{frame}
+\begin{frame}{Strona tytulowa}
 \titlepage
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Spis tresci}
 \tableofcontents
 \end{frame}
 
@@ -238,7 +238,6 @@ Inv == TypeInvariant
 \begin{frame}[fragile]{Metoda 3: Własności temporalne}
   \textbf{Fragment specyfikacji własności temporalnych w TLA+:}
   \vspace{0.5em}
-
   \begin{verbatim}
 Safety == [](Len(queue) >= 0)
 
@@ -269,7 +268,6 @@ Liveness == <>(queue = << >>)
 
 
 
-
 \begin{frame}{Bibliografia}
   \scriptsize
   \begin{thebibliography}{9}
@@ -285,7 +283,23 @@ Liveness == <>(queue = << >>)
   
     \bibitem{wayne2018practical}
     Hillel Wayne, \emph{Practical TLA+: Planning Driven Development}, Lospinato Books, 2018.
-    
+    \bibitem{paper}
+    S. Poreda,
+    \textit{Wykorzystanie metod formalnych do specyfikacji struktur wskaźnikowych},
+    Uniwersytet Warszawski, 2023.
+
+    \bibitem{spin_needham_schroeder}
+    Sławomir Lasota,
+    \textit{Weryfikacja protokołu Needhama-Schroedera przy użyciu narzędzi SPIN i UPPAAL},
+    Wydział Matematyki, Informatyki i Mechaniki, Uniwersytet Warszawski,
+    \url{https://www.mimuw.edu.pl/~sl/teaching/03_04/WPKWK/PREZENTACJE-SPIN_UPPAAL/NS/}.
+
+    \bibitem{wojnicki2019weryfikacja}
+    Igor Wojnicki,
+    \textit{Weryfikacja własności systemów współbieżnych z użyciem metod formalnych},
+    Praca doktorska, Akademia Górniczo-Hutnicza im. Stanisława Staszica w Krakowie, 2019,
+    \url{https://winntbg.bg.agh.edu.pl/rozprawy2/10463/full10463.pdf}.
+        
   \end{thebibliography}
 \end{frame}
 
