@@ -62,7 +62,7 @@
     \section{Formalna weryfikacja z użyciem TLA+}
     TLA+ (Temporal Logic of Actions) to język specyfikacji formalnej zaprojektowany przez Lesliego Lamporta do opisu i analizy systemów współbieżnych i rozproszonych. Umożliwia modelowanie systemu jako zbioru zmiennych oraz akcji – przejść między stanami – z wykorzystaniem logiki temporalnej i matematyki zbiorów. Język ten pozwala na tworzenie deklaratywnych specyfikacji, które opisują zamierzone zachowanie systemu niezależnie od jego implementacji. Weryfikacja poprawności odbywa się za pomocą narzędzia TLC, które stosuje technikę model checking, przeszukując przestrzeń stanów w celu sprawdzenia, czy system spełnia zadane własności.
 
-    TLA+ wykorzystuje trzy główne podejścia formalne. Pierwszym z nich jest matematyczne modelowanie systemu – precyzyjne określenie przestrzeni stanów i możliwych akcji, z użyciem obiektów takich jak zbiory, funkcje czy sekwencje. Drugim jest weryfikacja inwariantów, czyli logicznych warunków, które muszą być spełnione w każdym stanie systemu, co pozwala wykrywać istotne błędy, np. naruszenia spójności lub niedozwolone operacje. Trzecim podejściem jest analiza własności temporalnych w logice LTL – umożliwiająca weryfikację zachowań systemu w czasie, takich jak osiągalność pewnych stanów, brak zakleszczeń czy deterministyczne następstwo zdarzeń. TLA+ znajduje zastosowanie w projektowaniu i weryfikacji złożonych systemów rozproszonych w środowiskach przemysłowych, m.in. w Amazonie, Microsoftcie i Google, gdzie wykorzystywany jest do analizy protokołów, systemów bazodanowych i usług chmurowych.
+    TLA+ wykorzystuje trzy główne podejścia formalne. Pierwszym z nich jest matematyczne modelowanie systemu – precyzyjne określenie przestrzeni stanów i możliwych akcji, z użyciem obiektów takich jak zbiory, funkcje czy sekwencje. Drugim jest weryfikacja inwariantów, czyli logicznych warunków, które muszą być spełnione w każdym stanie systemu, co pozwala wykrywać istotne błędy, np. naruszenia spójności lub niedozwolone operacje. Trzecim podejściem jest analiza własności temporalnych w logice – umożliwiająca weryfikację zachowań systemu w czasie, takich jak osiągalność pewnych stanów, brak zakleszczeń czy deterministyczne następstwo zdarzeń. TLA+ znajduje zastosowanie w projektowaniu i weryfikacji złożonych systemów rozproszonych w środowiskach przemysłowych, m.in. w Amazonie, Microsoftcie i Google, gdzie wykorzystywany jest do analizy protokołów, systemów bazodanowych i usług chmurowych.
     
     
     \section{Bibliografia}
@@ -110,6 +110,10 @@
             S. Poreda,
             \textit{Wykorzystanie metod formalnych do specyfikacji struktur wskaźnikowych},
             Uniwersytet Warszawski, 2023.
+
+            \bibitem{newcombe2015formal}
+            Chris Newcombe, Tim Rath, Fan Zhang, Bogdan Munteanu, Marc Brooker, Michael Deardeuff, \emph{How Amazon Web Services Uses Formal Methods}, Communications of the ACM, Vol. 58, No. 4, pp. 66--73, 2015.
+
         \end{thebibliography}
 
 \end{document}
