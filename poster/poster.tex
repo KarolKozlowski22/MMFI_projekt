@@ -8,39 +8,39 @@
 \usepackage[base]{babel}
 \usepackage{lipsum}
 
-\title{\Huge{A Purdue \LaTeX\ Poster Template}}
-\author{\Large{A Purdue Student\texorpdfstring{\textsuperscript{1}}{}, A Duepur Student\texorpdfstring{\textsuperscript{2}}{}}}
+\title{\Huge{Zastosowanie metod formalnych}}
+\author{\Large{Karol Kozlowski\texorpdfstring{\textsuperscript{1}}{}, Katarzyna Mielęcka \texorpdfstring{\textsuperscript{2}}{}}}
 \institute
-{\large{Purdue University\texorpdfstring{\textsuperscript{1}}{}, Duepur University\texorpdfstring{\textsuperscript{2}},\\
-Appearing at Overleaf Template}}
+{\large{Politechnika Warszawska},\\
+Wydzial Elektryczny}
 \date{\today}
 
 \renewcommand{\titlelogo}{
     % You can put multiple logos here.
-    \includesvg[width=.06\paperwidth,keepaspectratio]{logo/cs-v-rev.svg}
+    \includesvg[width=.06\paperwidth,keepaspectratio]{logo/politechnika-warszawska-seeklogo.svg}
     \vskip50pt
-    \includesvg[width=.06\paperwidth,keepaspectratio]{logo/pu-v-rev.svg}
+    \includesvg[width=.06\paperwidth,keepaspectratio]{logo/we.svg}
 }
 
 \begin{document}
 \begin{frame}{}
     \begin{columns}[c]
     \begin{column}{.48\linewidth}
-    \begin{block}{\large Long Text}
-        \bigskip
+    \begin{block}{\large Metody formalne}
+        Metody formalne to matematyczne techniki wspomagające projektowanie i analizę 
+        systemów informatycznych. Główną zaletą metod formalnych są \textbf{matematyczne gwarancje poprawności}, 
+        szczególnie istotne w systemach krytycznych (medycznych, transportowych).
+        Pozwalają one identyfikować złożone błędy, takie jak zakleszczenia czy warunki wyścigu, 
+        które często wymykają się tradycyjnym metodom testowania. 
 
-        \lipsum[2]
     \end{block}
 
-    \begin{block}{Itemize List}
+    \begin{block}{Kluczowe zalety metod formalnych}
         Some introduction of the list.
         \begin{itemize}
-            \item Bulleted copy. Keep it short with bite-size chunks of information.
-            \begin{itemize}
-                \item Bulleted copy. Keep it short with bite-size chunks of information.
-            \end{itemize}
-            \item Bulleted copy. Keep it short with bite-size chunks of information.
-            \item Bulleted copy. Keep it short with bite-size chunks of information.
+            \item Formalne gwarancje poprawności - zapewnienie matematycznie udowodnionej poprawności systemów, szczególnie w przypadku wymagań bezpieczeństwa.
+            \item Precyzyjna specyfikacja wymagań - eliminacja niejednoznaczności dzięki matematycznym modelom i notacjom.
+            \item Wykrywanie złożonych błędów - identyfikacja problemów takich jak zakleszczenia (deadlocks) czy warunki wyścigu (race conditions), które trudno wykryć tradycyjnymi metodami testowania.
         \end{itemize}
     \end{block}
 
@@ -56,16 +56,16 @@ Appearing at Overleaf Template}}
         \end{enumerate}
     \end{block}
 
-    \begin{block}{Maths}
-        An example of some very long equations with $\Psi (x,t)$:
+    \begin{block}{System PVS w pigułce}
         
-        \begin{align}
-        i\hbar {\frac {\partial }{\partial t}}\Psi (x,t)&=\left[-{\frac {\hbar ^{2}}{2m}}{\frac {\partial ^{2}}{\partial x^{2}}}+V(x,t)\right]\Psi (x,t) \\
-        i\hbar {\frac {d}{dt}}\vert \Psi (t)\rangle &={\hat {H}}\vert \Psi (t)\rangle \\ 
-        |\Psi (t)\rangle &=\sum _{n}A_{n}e^{{-iE_{n}t}/\hbar }|\psi _{E_{n}}\rangle
-        \end{align}
+        \begin{align*}
+            &\textbf{pointer\_env} \ [P: \text{TYPE}, \ T: \text{TYPE}]: \text{THEORY} \\
+            &\quad \text{BEGIN} \\
+            &\quad\quad \text{pointer}: \text{TYPE} = P + \{\text{nil}\} \\
+            &\quad\quad \text{env}: \text{TYPE} = [\text{pointer} \rightarrow (T + \{\text{undefined}\})] \\
+            &\quad \text{END pointer\_env}
+          \end{align*}
         
-        Indeed an example of some very long equations with $\Psi (x,t)$.
     \end{block}
     
     \end{column}
@@ -98,13 +98,13 @@ Appearing at Overleaf Template}}
     A gray block with two different colors.
     \end{exampleblock}
 
-    \begin{alertblock}{Alert Block}
-    A red block for alert, in default theme from \LaTeX.
+    % \begin{alertblock}{Alert Block}
+    % A red block for alert, in default theme from \LaTeX.
 
-    \bigskip
+    % \bigskip
     
-    \lipsum[7]
-    \end{alertblock}
+    % \lipsum[7]
+    % \end{alertblock}
 
     \begin{block}{Thank you for using!}
         For issues on the template, please visit the Github page:
@@ -112,14 +112,57 @@ Appearing at Overleaf Template}}
         {\small\texttt{https://github.com/zhtluo/purdue-slide-template}\par}
     \end{block}
 
-    \begin{block}{\large QR Code}
-        Put a QR code here to give the reader something to scan.
+    \begin{block}{\large Bibliografia}
+        {\scriptsize 
+        \begin{thebibliography}{00}
+            \bibitem{lamport2002specifying}
+            Leslie Lamport, \emph{Specifying Systems: The TLA+ Language and Tools for Hardware and Software Engineers}, Addison-Wesley, 2002.
+          
+            \bibitem{newcombe2015amazon}
+            Chris Newcombe et al., \emph{How Amazon Web Services Uses Formal Methods}, Communications of the ACM, 2015.
+          
+            \bibitem{konnov2019tla}
+            Igor Konnov, Jure Kukovec, Thanh-Hai Tran, \emph{TLA+ Model Checking Made Symbolic}, CAV 2019.
+          
+            \bibitem{wayne2018practical}
+            Hillel Wayne, \emph{Practical TLA+: Planning Driven Development}, Lospinato Books, 2018.
+            \bibitem{paper}
+            S. Poreda,
+            \textit{Wykorzystanie metod formalnych do specyfikacji struktur wskaźnikowych},
+            Uniwersytet Warszawski, 2023.
+        
+            \bibitem{spin_needham_schroeder}
+            Sławomir Lasota,
+            \textit{Weryfikacja protokołu Needhama-Schroedera przy użyciu narzędzi SPIN i UPPAAL},
+            Wydział Matematyki, Informatyki i Mechaniki, Uniwersytet Warszawski,
+            % \url{https://www.mimuw.edu.pl/~sl/teaching/03_04/WPKWK/PREZENTACJE-SPIN_UPPAAL/NS/}.
+        
+            \bibitem{wojnicki2019weryfikacja}
+            Igor Wojnicki,
+            \textit{Weryfikacja własności systemów współbieżnych z użyciem metod formalnych},
+            Praca doktorska, Akademia Górniczo-Hutnicza im. Stanisława Staszica w Krakowie, 2019,
+            % \url{https://winntbg.bg.agh.edu.pl/rozprawy2/10463/full10463.pdf}.
 
-        You can find the SVG QR generator under \texttt{qr.py}.
+            \bibitem{lamport2002specifying}
+            Leslie Lamport, \emph{Specifying Systems: The TLA+ Language and Tools for Hardware and Software Engineers}, Addison-Wesley, 2002.
+        
+            \bibitem{newcombe2015amazon}
+            Chris Newcombe et al., \emph{How Amazon Web Services Uses Formal Methods}, Communications of the ACM, 2015.
+        
+            \bibitem{konnov2019tla}
+            Igor Konnov, Jure Kukovec, Thanh-Hai Tran, \emph{TLA+ Model Checking Made Symbolic}, CAV 2019.
+        
+            \bibitem{wayne2018practical}
+            Hillel Wayne, \emph{Practical TLA+: Planning Driven Development}, Lospinato Books, 2018.
+            \bibitem{paper}
+            S. Poreda,
+            \textit{Wykorzystanie metod formalnych do specyfikacji struktur wskaźnikowych},
+            Uniwersytet Warszawski, 2023.
 
-        \begin{figure}
-            {\centering\includesvg[width=.5\linewidth]{qrcode.svg}}
-        \end{figure}
+            \bibitem{newcombe2015formal}
+            Chris Newcombe, Tim Rath, Fan Zhang, Bogdan Munteanu, Marc Brooker, Michael Deardeuff, \emph{How Amazon Web Services Uses Formal Methods}, Communications of the ACM, Vol. 58, No. 4, pp. 66--73, 2015.
+        \end{thebibliography}
+        }
     \end{block}
     \end{column}
     \end{columns}
