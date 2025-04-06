@@ -1,0 +1,90 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage[utf8]{inputenc} 
+\usepackage[polish]{babel}  
+\usepackage[T1]{fontenc}
+\usepackage{verbatim}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\begin{document}
+    \title{Zastosowanie metod formalnych}
+
+    \author{
+    \IEEEauthorblockN{Karol Kozlowski}
+    \IEEEauthorblockA{\textit{Wydzial elektryczny} \\
+    \textit{Politechnika Warszawska} \\
+    }
+    % \and
+    % \IEEEauthorblockN{2\textsuperscript{nd} Author Name}
+    % \IEEEauthorblockA{\textit{Department} \\
+    % \textit{Institution} \\
+    % City, Country \\
+    % email@domain.com}
+    }
+
+    \maketitle
+
+    \section{Wprowadzenie do metod formalnych}
+    Metody formalne to matematyczne techniki wspomagające projektowanie i analizę systemów informatycznych. Ich istotę stanowią trzy kluczowe elementy:
+
+        \begin{itemize}
+            \item \textbf{Specyfikacja} - precyzyjny opis systemów za pomocą języków matematycznych (np. logika temporalna, rachunek procesów), eliminujący niejednoznaczności typowe dla dokumentacji tekstowej.
+            
+            \item \textbf{Weryfikacja} - formalne dowodzenie poprawności systemów poprzez:
+            \begin{itemize}
+                \item model checking (np. narzędzie SPIN do weryfikacji protokołów.
+                \item dowody twierdzeń (np. w systemach Coq, Isabelle).
+            \end{itemize}
+            
+            \item \textbf{Automatyzacja analizy} - wykrywanie sprzeczności i luk na etapie modelowania (np. weryfikacja struktur wskaźnikowych w PVS.
+        \end{itemize}
+
+        Główną zaletą metod formalnych są \textbf{matematyczne gwarancje poprawności}, szczególnie istotne w systemach krytycznych (medycznych, transportowych).
+        Pozwalają one identyfikować złożone błędy, takie jak zakleszczenia czy warunki wyścigu, które często wymykają się tradycyjnym metodom testowania.
+    
+    \section{System PVS}
+    System PVS (Prototype Verification System) to zaawansowane narzędzie do opracowywania i weryfikacji formalnych specyfikacji, które pozwala na modelowanie i dowodzenie poprawności złożonych systemów. 
+    PVS wyróżnia się rozbudowaną składnią i możliwością operowania w logice wyższego rzędu, co umożliwia definiowanie własnych typów, podtypów oraz tworzenie teorii parametryzowanych. 
+    Dzięki temu system jest szczególnie przydatny do weryfikacji struktur dynamicznych, takich jak układy wskaźnikowe, gdzie często dochodzi do wycieków pamięci, nieprawidłowych dereferencji czy zakleszczeń w systemach współbieżnych. 
+    PVS umożliwia formalne określenie niezmienników i warunków spójności, a następnie ich automatyczną lub półautomatyczną weryfikację.
+        
+    \section{Bibliografia}
+        \begin{thebibliography}{00}
+            \bibitem{lamport2002specifying}
+            Leslie Lamport, \emph{Specifying Systems: The TLA+ Language and Tools for Hardware and Software Engineers}, Addison-Wesley, 2002.
+          
+            \bibitem{newcombe2015amazon}
+            Chris Newcombe et al., \emph{How Amazon Web Services Uses Formal Methods}, Communications of the ACM, 2015.
+          
+            \bibitem{konnov2019tla}
+            Igor Konnov, Jure Kukovec, Thanh-Hai Tran, \emph{TLA+ Model Checking Made Symbolic}, CAV 2019.
+          
+            \bibitem{wayne2018practical}
+            Hillel Wayne, \emph{Practical TLA+: Planning Driven Development}, Lospinato Books, 2018.
+            \bibitem{paper}
+            S. Poreda,
+            \textit{Wykorzystanie metod formalnych do specyfikacji struktur wskaźnikowych},
+            Uniwersytet Warszawski, 2023.
+        
+            \bibitem{spin_needham_schroeder}
+            Sławomir Lasota,
+            \textit{Weryfikacja protokołu Needhama-Schroedera przy użyciu narzędzi SPIN i UPPAAL},
+            Wydział Matematyki, Informatyki i Mechaniki, Uniwersytet Warszawski,
+            % \url{https://www.mimuw.edu.pl/~sl/teaching/03_04/WPKWK/PREZENTACJE-SPIN_UPPAAL/NS/}.
+        
+            \bibitem{wojnicki2019weryfikacja}
+            Igor Wojnicki,
+            \textit{Weryfikacja własności systemów współbieżnych z użyciem metod formalnych},
+            Praca doktorska, Akademia Górniczo-Hutnicza im. Stanisława Staszica w Krakowie, 2019,
+            % \url{https://winntbg.bg.agh.edu.pl/rozprawy2/10463/full10463.pdf}.
+        \end{thebibliography}
+
+\end{document}
+
