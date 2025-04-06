@@ -13,22 +13,22 @@
 \usepackage{tabularx}
 
 \title{Zastosowanie metod formalnych}
-\author{Karol Kozlowski,}
+\author{Karol Kozlowski, Katarzyna Mielęcka, Jan Gawroński, Piotr Głowacki}
 \institute{Wydzial elektryczny, Politechnika Warszawska}
 \date{\today}
 
 \begin{document}
 
-\begin{frame}{Strona tytulowa}
+\begin{frame}{}
 \titlepage
 \end{frame}
 
-\begin{frame}{Spis tresci}
+\begin{frame}{Spis treści}
 \tableofcontents
 \end{frame}
 
 \section{Wprowadzenie do metod formalnych}
-\begin{frame}{Czym sa metody formalne?}
+\begin{frame}{Czym są metody formalne?}
 \begin{block}{Definicja}
   Metody formalne to techniki matematyczne służące do:
 \begin{itemize}
@@ -36,7 +36,6 @@
 \item Weryfikacji - dowodzenia poprawności systemów poprzez np. model checking (np. narzędzie SPIN) lub dowody twierdzeń (np. Coq, Isabelle)
 \item Automatyzacji analizy  wykrywania sprzeczności lub luk w projektach na etapie modelowania (np. weryfikacja protokołów kryptograficznych)
 \end{itemize}
-Wiecej na ten temat mozna znalezc w \cite{spin_needham_schroeder}.
 \end{block}
 \end{frame}
 
@@ -47,7 +46,6 @@ Wiecej na ten temat mozna znalezc w \cite{spin_needham_schroeder}.
 \item Precyzyjna specyfikacja wymagań - eliminacja niejednoznaczności dzięki matematycznym modelom i notacjom.
 \item Wykrywanie złożonych błędów - identyfikacja problemów takich jak zakleszczenia (deadlocks) czy warunki wyścigu (race conditions), które trudno wykryć tradycyjnymi metodami testowania.
 \end{itemize}
-Wiecej na ten temat mozna znalezc w \cite{wojnicki2019weryfikacja}.
 \end{exampleblock}
 
 \end{frame}
@@ -93,8 +91,6 @@ Wiecej na ten temat mozna znalezc w \cite{wojnicki2019weryfikacja}.
       \item Systemy awioniki i kosmiczne
   \end{itemize}
 \end{itemize}
-
-Wiecej na ten temat mozna znalezc w \cite{paper}.
 \end{alertblock}
 \end{frame}
 
@@ -109,8 +105,8 @@ Wiecej na ten temat mozna znalezc w \cite{paper}.
 \end{frame}
 
 \subsection{Formalna specyfikacja niezmiennikow}
-\begin{frame}[fragile]{Przyklad}
-  \begin{exampleblock}{Przyklad}
+\begin{frame}[fragile]{Przykład}
+  \begin{exampleblock}{Przykład}
     
   \begin{verbatim}
     accessed_disjoint?(accessed? : pred[pointer[P]]) : 
@@ -128,7 +124,7 @@ Wiecej na ten temat mozna znalezc w \cite{paper}.
 
 \subsection{Automatyczna weryfikacja warunkow spójności}
 
-\begin{frame}[fragile]{Przyklad}
+\begin{frame}[fragile]{Przykład}
   \begin{exampleblock}{TCC1 dla niepustosci listy, TCC2 dla zachowania typu w rekurencji, TCC3 dla warunku stopu rekurencji}
  
     \begin{verbatim}
@@ -153,7 +149,7 @@ Wiecej na ten temat mozna znalezc w \cite{paper}.
 
 \subsection{Półautomatyczne dowodzenie poprawności}
 
-% \begin{frame}[fragile]{Przykladdd}
+% \begin{frame}[fragile]{Przykładdd}
 
 % \end{frame}
 
@@ -269,6 +265,7 @@ Liveness == <>(queue = << >>)
   \end{itemize}
 \end{frame}
 
+\section{Metody formalne w systemach wbudowanych}
 \begin{frame}{Metody formalne w systemach wbudowanych}
   \begin{itemize}
     \item Metody formalne są kluczowe dla niezawodności i bezpieczeństwa systemów wbudowanych.
@@ -366,6 +363,7 @@ Liveness == <>(queue = << >>)
   \end{block}
 \end{frame}
 
+\section{Zastosowanie metod formalnych w kolejnictwie}
 \subsection{Dlaczego warto?}
 \begin{frame}
 \frametitle{Korzyści metod formalnych}
@@ -397,12 +395,12 @@ Liveness == <>(queue = << >>)
 \end{itemize}
 \end{frame}
 
-\subsection{B Method}
+\subsection{Metoda B}
 \begin{frame}
 \frametitle{Metody formalne w sygnalizacji}
 \begin{block}{Główne podejścia}
 \begin{itemize}
-\item B Method
+\item Metoda B
 \item Model Checking
 \item Sieci Petriego
 \item Dowodzenie Twierdzeń
@@ -411,7 +409,7 @@ Liveness == <>(queue = << >>)
 \end{frame}
 
 \begin{frame}
-\frametitle{B Method}
+\frametitle{Metoda B}
 \begin{itemize}
 \item Specyfikacja (maszyny abstrakcyjne)
 \item Stopniowa refinacja
@@ -541,7 +539,7 @@ Problem eksplozji stanów
 \hline
 \textbf{Metoda} & \textbf{Zalety} & \textbf{Wady} \\
 \hline
-B Method &
+Metoda B &
 Pełna weryfikacja, generacja kodu &
 Wymaga ekspertyzy, czasochłonne \\
 \hline
@@ -582,7 +580,6 @@ Integracja metod (np. Model Checking + Sieci Petriego)
 \begin{frame}{Bibliografia}
   \scriptsize
   \begin{thebibliography}{9}
-  
     \bibitem{lamport2002specifying}
     Leslie Lamport, \emph{Specifying Systems: The TLA+ Language and Tools for Hardware and Software Engineers}, Addison-Wesley, 2002.
   
@@ -595,14 +592,19 @@ Integracja metod (np. Model Checking + Sieci Petriego)
     \bibitem{newcombe2015formal}
     Chris Newcombe, Tim Rath, Fan Zhang, Bogdan Munteanu, Marc Brooker, Michael Deardeuff, \emph{How Amazon Web Services Uses Formal Methods}, Communications of the ACM, Vol. 58, No. 4, pp. 66--73, 2015.
 
-
     \bibitem{wayne2018practical}
     Hillel Wayne, \emph{Practical TLA+: Planning Driven Development}, Lospinato Books, 2018.
+    
     \bibitem{paper}
     S. Poreda,
     \textit{Wykorzystanie metod formalnych do specyfikacji struktur wskaźnikowych},
     Uniwersytet Warszawski, 2023.
+  \end{thebibliography}
+\end{frame}
 
+\begin{frame}{Bibliografia (cd.)}
+  \scriptsize
+  \begin{thebibliography}{9}
     \bibitem{spin_needham_schroeder}
     Sławomir Lasota,
     \textit{Weryfikacja protokołu Needhama-Schroedera przy użyciu narzędzi SPIN i UPPAAL},
@@ -616,18 +618,16 @@ Integracja metod (np. Model Checking + Sieci Petriego)
     \url{https://winntbg.bg.agh.edu.pl/rozprawy2/10463/full10463.pdf}.
 
     \bibitem{b-original}
-J.R Abrial. \emph{Modeling in Event-B}, Cambridge University Press, 2013
+    J.R Abrial. \emph{Modeling in Event-B}, Cambridge University Press, 2013.
 
     \bibitem{b-other}
-Abrial, J.R., Lee, M.K.O., Neilson, D.S., Scharbach, P.N., Sørensen, I.H. \emph{The B-method}. VDM '91 Formal Software Development Methods, 1991 https://doi.org/10.1007/BFb0020001
+    Abrial, J.R., Lee, M.K.O., Neilson, D.S., Scharbach, P.N., Sørensen, I.H. \emph{The B-method}. VDM '91 Formal Software Development Methods, 1991. \url{https://doi.org/10.1007/BFb0020001}
 
     \bibitem{b-tutorial}
-Dominique Cansell, Dominique Méry. \emph{Tutorial on the event-based B method}. IFIP FORTE 2006
-Paris, 2006. ffinria-00092846f
+    Dominique Cansell, Dominique Méry. \emph{Tutorial on the event-based B method}. IFIP FORTE 2006, Paris, 2006.
 
     \bibitem{b-cenelec-railway}
-A. Abdullah, \emph{CENELEC EN 50128: Railway Applications -Communication, signaling and processing systems, Software for railway control and protection systems}, Frankfurt University of Applied Sciences, 2020
-        
+    A. Abdullah, \emph{CENELEC EN 50128: Railway Applications - Communication, signaling and processing systems, Software for railway control and protection systems}, Frankfurt University of Applied Sciences, 2020.
   \end{thebibliography}
 \end{frame}
 
