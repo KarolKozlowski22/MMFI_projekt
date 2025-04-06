@@ -8,6 +8,9 @@
 \usepackage[polish]{babel}  
 \usepackage[T1]{fontenc}
 \usepackage{verbatim}
+\usepackage{amsmath, amssymb}
+\usepackage{tcolorbox}
+\usepackage{tabularx}
 
 \title{Zastosowanie metod formalnych}
 \author{Karol Kozlowski,}
@@ -363,6 +366,219 @@ Liveness == <>(queue = << >>)
   \end{block}
 \end{frame}
 
+\subsection{Dlaczego warto?}
+\begin{frame}
+\frametitle{Korzyści metod formalnych}
+\begin{itemize}
+\item Gwarancja bezpieczeństwa
+\begin{itemize}
+\item Wczesne wykrywanie błędów
+\end{itemize}
+
+\item Redukcja ryzyka
+\begin{itemize}
+\item Minimalizacja ludzkich pomyłek
+\end{itemize}
+
+\item Spełnienie standardów
+\begin{itemize}
+\item Normy CENELEC EN 50128 (SIL 3/4)
+\end{itemize}
+
+\item Optymalizacja kosztów
+\begin{itemize}
+\item Tańsze poprawianie na etapie projektowania
+\end{itemize}
+
+\item Zarządzanie złożonością
+\begin{itemize}
+\item Współbieżność, czas rzeczywisty, interakcje
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\subsection{B Method}
+\begin{frame}
+\frametitle{Metody formalne w sygnalizacji}
+\begin{block}{Główne podejścia}
+\begin{itemize}
+\item B Method
+\item Model Checking
+\item Sieci Petriego
+\item Dowodzenie Twierdzeń
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{B Method}
+\begin{itemize}
+\item Specyfikacja (maszyny abstrakcyjne)
+\item Stopniowa refinacja
+\item Generacja kodu z weryfikacją
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Maszyny abstrakcyjne}
+
+\begin{itemize}
+    \item zmienne
+    \item niezmienniki (inwarianty)
+    \item operacje
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Specyfikacja maszyny abstrakcyjnej dla silni (Cz. 1/3)}
+\begin{tcolorbox}[colback=white, colframe=blue!30!black, title=Machine FACTORIAL\_MAC]
+\textbf{Sets:} \\
+$\textit{factorial},\ m$
+
+\textbf{Constants:} \\
+$\textit{factorial}$
+
+\textbf{Properties:}
+\[
+\begin{aligned}
+& m \in \mathbb{N} \land \\
+& \textit{factorial} \in \mathbb{N} \leftrightarrow \mathbb{N} \land \\
+& f \in \mathbb{N} \leftrightarrow \mathbb{N} \land \\
+& 0 \mapsto 1 \in f \land \\
+\end{aligned}
+\]
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}{Specyfikacja maszyny abstrakcyjnej dla silni (Cz. 2/3)}
+\begin{tcolorbox}[colback=white, colframe=blue!30!black, title=Machine FACTORIAL\_MAC]
+\textbf{Properties (cont.):}
+\[
+\forall f.\ \begin{cases}
+\forall (n, fn).\ (n \mapsto fn \in f \Rightarrow n+1 \mapsto (n+1) \times fn \in f) \\
+\Rightarrow \\
+\textit{factorial} \subseteq f
+\end{cases}
+\]
+
+\textbf{Variables:}
+\begin{itemize}
+    \item $\textit{result}$
+\end{itemize}
+
+\textbf{Invariant:}
+\[
+\textit{result} \in \mathbb{N}
+\]
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}{Specyfikacja maszyny abstrakcyjnej dla silni (Cz. 3/3)}
+\begin{tcolorbox}[colback=white, colframe=blue!30!black, title=Machine FACTORIAL\_MAC]
+\textbf{Assertions:}
+\[
+\begin{aligned}
+& \textit{factorial} \in \mathbb{N} \rightarrow \mathbb{N}; \\
+& \textit{factorial}(0) = 1; \\
+& \forall n.\,(n \in \mathbb{N} \Rightarrow \textit{factorial}(n+1) = (n+1) \times \textit{factorial}(n))
+\end{aligned}
+\]
+
+\textbf{Initialisation:}
+\[
+\textit{result} := \mathbb{N}
+\]
+
+\textbf{Operations:}
+\[
+\textit{computation} = \text{\textbf{begin}}\ \textit{result} := \textit{factorial}(m)\ \text{\textbf{end}}
+\]
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}{Zastosowania i problemy}
+\begin{exampleblock}{Zastosowania}
+\begin{itemize}
+\item Metro paryskie
+\item Metro kopenhaskie
+\item Sygnalizacja kolejowa
+\end{itemize}
+\end{exampleblock}
+
+\begin{alertblock}{Wyzwania}
+\begin{itemize}
+\item Wymaga ekspertyzy
+\item Czasochłonne
+\end{itemize}
+\end{alertblock}
+\end{frame}
+
+\subsection{Model Checking}
+\begin{frame}
+\frametitle{Model Checking}
+\begin{itemize}
+\item Automatyczna weryfikacja modelu
+\item Graf stanów i własności systemu
+\item Narzędzia: NuSMV, UPPAAL
+\end{itemize}
+
+\begin{exampleblock}{Przykładowe zastosowanie}
+\begin{itemize}
+\item System ERTMS
+\item Weryfikacja bezpiecznych odległości
+\end{itemize}
+\end{exampleblock}
+
+\begin{alertblock}{Ograniczenia}
+Problem eksplozji stanów
+\end{alertblock}
+\end{frame}
+
+\subsection{Porównanie metod}
+\begin{frame}
+\frametitle{Porównanie metod}
+\scriptsize
+\begin{tabularx}{\textwidth}{|l|X|X|}
+\hline
+\textbf{Metoda} & \textbf{Zalety} & \textbf{Wady} \\
+\hline
+B Method &
+Pełna weryfikacja, generacja kodu &
+Wymaga ekspertyzy, czasochłonne \\
+\hline
+Model Checking &
+Automatyzacja, szybkość &
+Problem eksplozji stanów \\
+\hline
+Sieci Petriego &
+Wizualizacja współbieżności &
+Słaba skalowalność \\
+\hline
+Dowodzenie &
+Precyzja dla złożonych systemów &
+Czasochłonne, manualne \\
+\hline
+\end{tabularx}
+\end{frame}
+
+\subsection{Podsumowanie}
+\begin{frame}
+\frametitle{Podsumowanie}
+\begin{itemize}
+\item Metody formalne - niezbędne narzędzie w kolejnictwie
+\item Kluczowe dla spełnienia standardów bezpieczeństwa
+\item Wybór metody zależy od:
+\begin{itemize}
+\item Złożoności systemu
+\item Dostępnych zasobów
+\item Wymagań standardów
+\end{itemize}
+\end{itemize}
+
+\begin{block}{Przyszłe kierunki}
+Integracja metod (np. Model Checking + Sieci Petriego)
+\end{block}
+\end{frame}
+
 \begin{frame}{Bibliografia}
   \scriptsize
   \begin{thebibliography}{9}
@@ -398,6 +614,19 @@ Liveness == <>(queue = << >>)
     \textit{Weryfikacja własności systemów współbieżnych z użyciem metod formalnych},
     Praca doktorska, Akademia Górniczo-Hutnicza im. Stanisława Staszica w Krakowie, 2019,
     \url{https://winntbg.bg.agh.edu.pl/rozprawy2/10463/full10463.pdf}.
+
+    \bibitem{b-original}
+J.R Abrial. \emph{Modeling in Event-B}, Cambridge University Press, 2013
+
+    \bibitem{b-other}
+Abrial, J.R., Lee, M.K.O., Neilson, D.S., Scharbach, P.N., Sørensen, I.H. \emph{The B-method}. VDM '91 Formal Software Development Methods, 1991 https://doi.org/10.1007/BFb0020001
+
+    \bibitem{b-tutorial}
+Dominique Cansell, Dominique Méry. \emph{Tutorial on the event-based B method}. IFIP FORTE 2006
+Paris, 2006. ffinria-00092846f
+
+    \bibitem{b-cenelec-railway}
+A. Abdullah, \emph{CENELEC EN 50128: Railway Applications -Communication, signaling and processing systems, Software for railway control and protection systems}, Frankfurt University of Applied Sciences, 2020
         
   \end{thebibliography}
 \end{frame}
