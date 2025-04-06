@@ -47,17 +47,17 @@ Wydzial Elektryczny}
         \end{itemize}
     \end{block}
 
-    \begin{block}{Enumerate List}
-        Some introduction of the list.
-        \begin{enumerate}
-            \item Bulleted copy. Keep it short with bite-size chunks of information.
-            \begin{enumerate}
-                \item Bulleted copy. Keep it short with bite-size chunks of information.
-            \end{enumerate}
-            \item Bulleted copy. Keep it short with bite-size chunks of information.
-            \item Bulleted copy. Keep it short with bite-size chunks of information.
-        \end{enumerate}
-    \end{block}
+    % \begin{block}{Enumerate List}
+    %     Some introduction of the list.
+    %     \begin{enumerate}
+    %         \item Bulleted copy. Keep it short with bite-size chunks of information.
+    %         \begin{enumerate}
+    %             \item Bulleted copy. Keep it short with bite-size chunks of information.
+    %         \end{enumerate}
+    %         \item Bulleted copy. Keep it short with bite-size chunks of information.
+    %         \item Bulleted copy. Keep it short with bite-size chunks of information.
+    %     \end{enumerate}
+    % \end{block}
 
     \begin{block}{System PVS w pigułce}
         
@@ -109,31 +109,36 @@ Wydzial Elektryczny}
 
     \begin{column}{.48\linewidth}
     
-    \begin{block}{Figure}
-        \LaTeX\ can draw figures with the tikz package:
-        \begin{figure}[h]
-        \centering
-        \begin{tikzpicture}[
-        square/.style={rectangle, draw=black!, very thick, minimum size=5mm},
-        ]
-        \node[square](client){\footnotesize Client};
-        \node[square](r1)[right=2em of client]{\footnotesize Relay 1};
-        \node[square](r2)[right=2em of r1]{\footnotesize Relay 2};
-        \node[square](r3)[right=2em of r2]{\footnotesize Relay 3};
-        \node[square](server)[right=2em of r3]{\footnotesize Server};
-        \draw[->](client.east)--node[above=1em]{\footnotesize$E_1(E_2(E_3(P)))$}(r1.west);
-        \draw[->](r1.east)--node[above=1em]{\footnotesize$E_2(E_3(P))$}(r2.west);
-        \draw[->](r2.east)--node[above=1em]{\footnotesize$E_3(P)$}(r3.west);
-        \draw[->](r3.east)--node[above=1em]{\footnotesize$P$}(server);
-        \end{tikzpicture}
-        \caption{An Example of a Three-Hop Connection}
-        \label{fig:three-hop}
-        \end{figure}
+    % \begin{block}{Figure}
+    %     \LaTeX\ can draw figures with the tikz package:
+    %     \begin{figure}[h]
+    %     \centering
+    %     \begin{tikzpicture}[
+    %     square/.style={rectangle, draw=black!, very thick, minimum size=5mm},
+    %     ]
+    %     \node[square](client){\footnotesize Client};
+    %     \node[square](r1)[right=2em of client]{\footnotesize Relay 1};
+    %     \node[square](r2)[right=2em of r1]{\footnotesize Relay 2};
+    %     \node[square](r3)[right=2em of r2]{\footnotesize Relay 3};
+    %     \node[square](server)[right=2em of r3]{\footnotesize Server};
+    %     \draw[->](client.east)--node[above=1em]{\footnotesize$E_1(E_2(E_3(P)))$}(r1.west);
+    %     \draw[->](r1.east)--node[above=1em]{\footnotesize$E_2(E_3(P))$}(r2.west);
+    %     \draw[->](r2.east)--node[above=1em]{\footnotesize$E_3(P)$}(r3.west);
+    %     \draw[->](r3.east)--node[above=1em]{\footnotesize$P$}(server);
+    %     \end{tikzpicture}
+    %     \caption{An Example of a Three-Hop Connection}
+    %     \label{fig:three-hop}
+    %     \end{figure}
+    % \end{block}
+    \begin{block}{Metody formalne w systemach wbudowanych}
+    Metody formalne, takie jak RT-EFSM, Sieci Petriego z Czasem i Kolorami (TCPN) oraz metoda B, odgrywają kluczową rolę w projektowaniu, 
+    testowaniu i weryfikacji systemów wbudowanych działających w środowiskach krytycznych. Umożliwiają one precyzyjne modelowanie, analizę zachowań czasowych i 
+    współbieżnych oraz walidację zgodności z normami bezpieczeństwa, znacząco zwiększając niezawodność systemów.
     \end{block}
 
-    \begin{exampleblock}{Block with Another Color}
-    A gray block with two different colors.
-    \end{exampleblock}
+    % \begin{exampleblock}{Block with Another Color}
+    % A gray block with two different colors.
+    % \end{exampleblock}
 
     % \begin{alertblock}{Alert Block}
     % A red block for alert, in default theme from \LaTeX.
@@ -152,6 +157,8 @@ Wydzial Elektryczny}
     \begin{block}{\large Bibliografia}
         {\scriptsize 
         \begin{thebibliography}{00}
+        \setlength{\itemsep}{0pt}
+        \setlength{\parskip}{0pt} 
             \bibitem{lamport2002specifying}
             Leslie Lamport, \emph{Specifying Systems: The TLA+ Language and Tools for Hardware and Software Engineers}, Addison-Wesley, 2002.
           
@@ -198,6 +205,15 @@ Wydzial Elektryczny}
 
             \bibitem{newcombe2015formal}
             Chris Newcombe, Tim Rath, Fan Zhang, Bogdan Munteanu, Marc Brooker, Michael Deardeuff, \emph{How Amazon Web Services Uses Formal Methods}, Communications of the ACM, Vol. 58, No. 4, pp. 66--73, 2015.
+            \bibitem{RT-EFSM}
+            Y. Yin, B. Liu and H. Ni, "Real-time embedded software testing method based on extended finite state machine," in Journal of Systems Engineering and Electronics, vol. 23, no. 2, pp. 276-285, April 2012, doi: 10.1109/JSEE.2012.00035.
+            
+            \bibitem{petri-nets-embedded}
+            F. Moin, F. Azam and M. W. Anwar, "A Model-driven Approach for Formal Verification of Embedded Systems Using Timed Colored Petri Nets," 2018 IEEE 4th International Conference on Computer and Communications (ICCC), Chengdu, China, 2018, pp. 2580-2584, doi: 10.1109/CompComm.2018.8780731.
+
+            \bibitem{model-b-embedded}
+            J. R. Abrial, \emph{Modeling in Event-B: System and Software Engineering}, Cambridge University Press, 2010.Noguchi, Kenichiro. Application Of Formal Methods For Designing A Separation Kernel For Embedded Systems. Zenodo, 2010.
+
         \end{thebibliography}
         }
     \end{block}
