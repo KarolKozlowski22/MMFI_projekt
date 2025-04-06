@@ -8,6 +8,9 @@
 \usepackage[base]{babel}
 \usepackage{lipsum}
 
+\tikzstyle{block} = [rectangle, draw, fill=white, text centered, rounded corners, minimum height=2.9em]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
 \title{\Huge{Zastosowanie metod formalnych}}
 \author{\Large{Karol Kozlowski\texorpdfstring{\textsuperscript{1}}{}, Katarzyna Mielęcka \texorpdfstring{\textsuperscript{2}}{}}}
 \institute
@@ -68,6 +71,40 @@ Wydzial Elektryczny}
         
     \end{block}
     
+
+    \begin{block}{Zastosowanie metod formalnych – TLA+}
+        \vspace{0.5cm}
+        \begin{minipage}[c]{0.35\textwidth}
+            \centering
+            \begin{tikzpicture}[node distance=3.5cm, scale=0.85, every node/.style={transform shape}]
+                \node (model) [block] {Model matematyczny};
+                \node (invariants) [block, below of=model] {Definicja inwariantów};
+                \node (temporal) [block, below of=invariants] {Formuły temporalne (LTL)};
+                \node (tlc) [block, below of=temporal] {TLC – model checking};
+                \node (errors) [block, below of=tlc] {Wykrywanie błędów logicznych};
+                \node (industry) [block, below of=errors] {Zastosowanie w przemyśle};
+    
+                \draw [arrow] (model) -- (invariants);
+                \draw [arrow] (invariants) -- (temporal);
+                \draw [arrow] (temporal) -- (tlc);
+                \draw [arrow] (tlc) -- (errors);
+                \draw [arrow] (errors) -- (industry);
+            \end{tikzpicture}
+            \vspace{0.5cm}
+        \end{minipage}
+        \hfill
+        \begin{minipage}[c]{0.6\textwidth}
+        Metody formalne pozwalają na matematyczne modelowanie\\ i automatyczną weryfikację systemów.\\  
+        TLA+ wykorzystuje trzy główne podejścia:
+        \begin{itemize}
+            \item \textbf{Modelowanie systemu} – zmienne, akcje, przestrzeń stanów,
+            \item \textbf{Inwarianty} – warunki poprawności w każdym stanie,
+            \item \textbf{Własności temporalne} – analiza zachowania w czasie.
+        \end{itemize}
+        Weryfikacja odbywa się za pomocą narzędzia TLC i model checkingu. TLA+ stosowany jest w Amazonie, Microsoftcie i Google.
+        \end{minipage}
+    \end{block}
+
     \end{column}
 
     \begin{column}{.48\linewidth}
