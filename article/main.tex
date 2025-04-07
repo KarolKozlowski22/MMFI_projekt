@@ -18,22 +18,22 @@
 
     \author{
     \IEEEauthorblockN{Karol Kozlowski}
-    \IEEEauthorblockA{\textit{Wydzial elektryczny} \\
+    \IEEEauthorblockA{\textit{Wydział Elektryczny} \\
     \textit{Politechnika Warszawska} \\
     }
        \and
     \IEEEauthorblockN{Katarzyna Mielęcka}
-    \IEEEauthorblockA{\textit{Wydział elektryczny} \\
+    \IEEEauthorblockA{\textit{Wydział Elektryczny} \\
     \textit{Politechnika Warszawska} \\
     }
     \and
     \IEEEauthorblockN{Jan Gawroński}
-    \IEEEauthorblockA{\textit{Wydział elektryczny} \\
+    \IEEEauthorblockA{\textit{Wydział Elektryczny} \\
     \textit{Politechnika Warszawska} \\
     }
     \and
     \IEEEauthorblockN{Piotr Głowacki}
-    \IEEEauthorblockA{\textit{Wydział elektryczny} \\
+    \IEEEauthorblockA{\textit{Wydział Elektryczny} \\
     \textit{Politechnika Warszawska} \\
     }
     }
@@ -67,6 +67,29 @@
     TLA+ (Temporal Logic of Actions) to język specyfikacji formalnej zaprojektowany przez Lesliego Lamporta do opisu i analizy systemów współbieżnych i rozproszonych. Umożliwia modelowanie systemu jako zbioru zmiennych oraz akcji – przejść między stanami – z wykorzystaniem logiki temporalnej i matematyki zbiorów. Język ten pozwala na tworzenie deklaratywnych specyfikacji, które opisują zamierzone zachowanie systemu niezależnie od jego implementacji. Weryfikacja poprawności odbywa się za pomocą narzędzia TLC, które stosuje technikę model checking, przeszukując przestrzeń stanów w celu sprawdzenia, czy system spełnia zadane własności.
 
     TLA+ wykorzystuje trzy główne podejścia formalne. Pierwszym z nich jest matematyczne modelowanie systemu – precyzyjne określenie przestrzeni stanów i możliwych akcji, z użyciem obiektów takich jak zbiory, funkcje czy sekwencje. Drugim jest weryfikacja inwariantów, czyli logicznych warunków, które muszą być spełnione w każdym stanie systemu, co pozwala wykrywać istotne błędy, np. naruszenia spójności lub niedozwolone operacje. Trzecim podejściem jest analiza własności temporalnych w logice – umożliwiająca weryfikację zachowań systemu w czasie, takich jak osiągalność pewnych stanów, brak zakleszczeń czy deterministyczne następstwo zdarzeń. TLA+ znajduje zastosowanie w projektowaniu i weryfikacji złożonych systemów rozproszonych w środowiskach przemysłowych, m.in. w Amazonie, Microsoftcie i Google, gdzie wykorzystywany jest do analizy protokołów, systemów bazodanowych i usług chmurowych.
+    
+    \section{Kolejnictwo}
+    Metody formalne odgrywają kluczową rolę w rozwoju systemów krytycznych, gdzie błędy mogą prowadzić do katastrofalnych konsekwencji.
+    W niniejszym rozdziale omówiono zastosowanie metod formalnych na przykładzie systemów kolejowych. 
+    Metody formalne w kolejnictwie pozwalają zweryfikować pozwalają zweryfikować, 
+    czy sygnalizacja \textbf{uniemożliwi kolizję pociągów} w dowolnych warunkach, poprawność działania jednostek \textbf{DCU (Door Control Unit)} czy \textbf{TCU (Traction Control Unit)}.
+    W praktyce stosuje się różne techniki formalne, dopasowane do specyfiki problemów:
+    \begin{itemize}
+        \item Model checking - np. narzędzia UPPAAL, NuSMV czy SPIN. Są one szczególnie przydatne w analizie systemów czasu rzeczywistego, gdzie istotne są ograniczenia czasowe i współbieżność. 
+        W kolejowym systemie ERTMS/ETCS Level 3 wykorzystano UPPAAL SMC do weryfikacji ruchu pociągów w trybie „moving block”, uwzględniając stochastyczne czynniki, takie jak opóźnienia komunikacji. 
+        Wadą tego podejścia jest natomiast rozmiar modelu, który może nie zmieścić się w pamięci komputera w przypadku modelowania dużych systemów.
+        \item Theorem proving - np. Isabelle/HOL czy Coq. Wymagają one głębokiej wiedzy matematycznej, ale pozwalają na analizę systemów o nieskończonej przestrzeni stanów. W przypadku chińskiego systemu CTCS zastosowano Isabelle/HOL do formalnej weryfikacji algorytmów kontroli ruchu. Z kolei na 14. linii metra paryskiego zastosowanie metody B pozwoliło na modernizację systemu sygnalizacji dla zwiększenia częstotliwości kursowania pociągów przy zachowaniu bezpieczeństwa.
+        \item Statyczna analiza i abstrakcyjna interpretacja - np. narzędzia oparte na technikach przybliżonych, które balansują między precyzją a wydajnością.
+    \end{itemize}
+    Badania systematyczne (ter Beek 2025, przegląd 328 publikacji z lat 1989-2020) wykazały, że 65\% prac w dziedzinie kolejnictwa wykorzystuje ściśle formalne metody, podczas gdy tylko 9\% ogranicza się do półformalnych. Co istotne, w projektach przemysłowych odsetek metod półformalnych rośnie (51\% vs. 49\%), co wynika z konieczności komunikacji między inżynierami a interesariuszami.
+    \subsection{Metoda B}
+    Metoda formalna B to podejście do projektowania i weryfikacji systemów komputerowych, oparte na matematycznych podstawach. Metoda ta została wprowadzona przez Jeana-Raymonda Abriala i opiera się głównie na teorii zbiorów oraz logice predykatów.
+    Podstawowym elementem metody B jest tzw. \textbf{„abstrakcyjna maszyna stanowa”}, która stanowi formalny model systemu. Abstrakcyjna maszyna stanowa składa się z opisu stanu oraz operacji, które mogą zmieniać ten stan. Stan systemu definiowany jest przy użyciu zmiennych, których wartości są elementami określonych zbiorów. Operacje są opisywane za pomocą precyzyjnych reguł, określających warunki, jakie muszą być spełnione przed ich wykonaniem (tzw. prewarunki) oraz efekt, jaki zostanie osiągnięty po ich wykonaniu (tzw. postwarunki).
+
+Jednym z głównych atutów metody B jest możliwość stopniowego rozwoju systemu poprzez proces tzw. \textbf{„udoskonalania”}. Udoskonalanie polega na stopniowym przechodzeniu od wysokopoziomowej, abstrakcyjnej specyfikacji do bardziej szczegółowego, implementacyjnego opisu systemu. W każdej fazie udoskonalania wprowadzane są kolejne szczegóły, przy jednoczesnym zachowaniu dowodzonej poprawności poprzednich etapów. Taki proces umożliwia wykrywanie potencjalnych błędów już na etapie specyfikacji, co znacząco zmniejsza ryzyko pojawienia się krytycznych usterek podczas późniejszych faz rozwoju.
+Dopiero na samym końcu następuje \textbf{generacja kodu} w języku docelowym.
+
+Metoda B jest wykorzystywana przede wszystkim w systemach wymagających wysokiego poziomu bezpieczeństwa i niezawodności, takich jak \textbf{systemy sterowania ruchem kolejowym, systemy bankowe, oprogramowanie dla lotnictwa czy systemy wbudowane}.
     
     \section{Systemy Wbudowane}
     
@@ -125,22 +148,15 @@
             \textit{Weryfikacja własności systemów współbieżnych z użyciem metod formalnych},
             Praca doktorska, Akademia Górniczo-Hutnicza im. Stanisława Staszica w Krakowie, 2019,
             % \url{https://winntbg.bg.agh.edu.pl/rozprawy2/10463/full10463.pdf}.
+            
+            \bibitem{b-other}
+    Abrial, J.R., Lee, M.K.O., Neilson, D.S., Scharbach, P.N., Sørensen, I.H. \emph{The B-method}. VDM '91 Formal Software Development Methods, 1991. https://doi.org/10.1007/BFb0020001
 
-            \bibitem{lamport2002specifying}
-            Leslie Lamport, \emph{Specifying Systems: The TLA+ Language and Tools for Hardware and Software Engineers}, Addison-Wesley, 2002.
-        
-            \bibitem{newcombe2015amazon}
-            Chris Newcombe et al., \emph{How Amazon Web Services Uses Formal Methods}, Communications of the ACM, 2015.
-        
-            \bibitem{konnov2019tla}
-            Igor Konnov, Jure Kukovec, Thanh-Hai Tran, \emph{TLA+ Model Checking Made Symbolic}, CAV 2019.
-        
-            \bibitem{wayne2018practical}
-            Hillel Wayne, \emph{Practical TLA+: Planning Driven Development}, Lospinato Books, 2018.
-            \bibitem{paper}
-            S. Poreda,
-            \textit{Wykorzystanie metod formalnych do specyfikacji struktur wskaźnikowych},
-            Uniwersytet Warszawski, 2023.
+    \bibitem{b-tutorial}
+    Dominique Cansell, Dominique Méry. \emph{Tutorial on the event-based B method}. IFIP FORTE 2006, Paris, 2006.
+
+    \bibitem{b-cenelec-railway}
+    A. Abdullah, \emph{CENELEC EN 50128: Railway Applications - Communication, signaling and processing systems, Software for railway control and protection systems}, Frankfurt University of Applied Sciences, 2020.
 
             \bibitem{newcombe2015formal}
             Chris Newcombe, Tim Rath, Fan Zhang, Bogdan Munteanu, Marc Brooker, Michael Deardeuff, \emph{How Amazon Web Services Uses Formal Methods}, Communications of the ACM, Vol. 58, No. 4, pp. 66--73, 2015.
@@ -156,7 +172,7 @@
             
             \bibitem{railways-analysis-just-ter-beek}
             M. H. ter Beek, \emph{Models for formal methods and tools: the case of railway systems}, Springer, 2025.
-            \url{https://doi.org/10.1007/s10270-025-01276-3}
+            https://doi.org/10.1007/s10270-025-01276-3
         
             \bibitem{railways-analysis-ter-beek-ferrari}
             A. Ferrari, M. H. ter Beek, \emph{Formal Methods in Railways: A Systematic Mapping Study}, ACM Computing Surveys, Volume 55, Issue 4, 2022, https://doi.org/10.1145/3520480

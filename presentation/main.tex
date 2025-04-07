@@ -268,7 +268,7 @@ Liveness == <>(queue = << >>)
 \section{Zastosowanie metod formalnych w kolejnictwie}
 \subsection{Dlaczego warto?}
 \begin{frame}
-\frametitle{Korzyści metod formalnych}
+\frametitle{Korzyści metod formalnych w kolejnictwie}
 \begin{itemize}
 \item Gwarancja bezpieczeństwa
 \begin{itemize}
@@ -297,24 +297,33 @@ Liveness == <>(queue = << >>)
 \end{itemize}
 \end{frame}
 
-\subsection{Metoda B}
+\subsection{Przegląd tematu}
 \begin{frame}
-\frametitle{Metody formalne w sygnalizacji}
+\frametitle{Rodzaje metod formalnych w kolejnictwie}
 \begin{block}{Główne podejścia}
 \begin{itemize}
-\item Metoda B
-\item Model Checking
-\item Sieci Petriego
-\item Dowodzenie Twierdzeń
+\item Dowodzenie twierdzeń
+    \begin{itemize}
+        \item Coq
+        \item Isabelle
+        \item Metoda B (udoskonalanie oparte o stan)
+    \end{itemize}
+\item Sprawdzanie modeli
+    \begin{itemize}
+        \item Sieci Petriego
+        \item NuSMV
+        \item UPPAAL
+    \end{itemize}
 \end{itemize}
 \end{block}
 \end{frame}
 
+\subsection{Metoda B}
 \begin{frame}
 \frametitle{Metoda B}
 \begin{itemize}
 \item Specyfikacja (maszyny abstrakcyjne)
-\item Stopniowa refinacja
+\item Stopniowa udoskonalanie
 \item Generacja kodu z weryfikacją
 \end{itemize}
 \end{frame}
@@ -398,16 +407,15 @@ $\textit{factorial}$
 \begin{frame}{Zastosowania i problemy}
 \begin{exampleblock}{Zastosowania}
 \begin{itemize}
-\item Metro paryskie
+\item Metro paryskie (linia 14)
 \item Metro kopenhaskie
-\item Sygnalizacja kolejowa
 \end{itemize}
 \end{exampleblock}
 
 \begin{alertblock}{Wyzwania}
 \begin{itemize}
 \item Wymaga ekspertyzy
-\item Czasochłonne
+\item Czasochłonna
 \end{itemize}
 \end{alertblock}
 \end{frame}
@@ -421,9 +429,11 @@ $\textit{factorial}$
 \item Narzędzia: NuSMV, UPPAAL
 \end{itemize}
 
-\begin{exampleblock}{Przykładowe zastosowanie}
+\begin{exampleblock}{Przykładowe zastosowania}
 \begin{itemize}
-\item System ERTMS
+\item System ERTMS (European Rail Traffic Management System)
+\
+\item Tramwaje we Florencji
 \item Weryfikacja bezpiecznych odległości
 \end{itemize}
 \end{exampleblock}
@@ -475,7 +485,10 @@ Czasochłonne, manualne \\
 \end{itemize}
 
 \begin{block}{Przyszłe kierunki}
-Integracja metod (np. Model Checking + Sieci Petriego)
+    \begin{itemize}
+        \item weryfikacja narzędzi AI
+        \item zmniejszenie dystansu między metodami semi-formalnymi a formalnymi
+    \end{itemize}
 \end{block}
 \end{frame}
 
@@ -610,8 +623,8 @@ Integracja metod (np. Model Checking + Sieci Petriego)
     Praca doktorska, Akademia Górniczo-Hutnicza im. Stanisława Staszica w Krakowie, 2019,
     \url{https://winntbg.bg.agh.edu.pl/rozprawy2/10463/full10463.pdf}.
 
-    \bibitem{b-original}
-    J.R Abrial. \emph{Modeling in Event-B}, Cambridge University Press, 2013.
+    % \bibitem{b-original}
+    % J.R Abrial. \emph{Modeling in Event-B}, Cambridge University Press, 2013.
 
     \bibitem{b-other}
     Abrial, J.R., Lee, M.K.O., Neilson, D.S., Scharbach, P.N., Sørensen, I.H. \emph{The B-method}. VDM '91 Formal Software Development Methods, 1991. \url{https://doi.org/10.1007/BFb0020001}
@@ -636,6 +649,12 @@ Integracja metod (np. Model Checking + Sieci Petriego)
     \bibitem{model-b-embedded}
     J. R. Abrial, \emph{Modeling in Event-B: System and Software Engineering}, Cambridge University Press, 2010.Noguchi, Kenichiro. Application Of Formal Methods For Designing A Separation Kernel For Embedded Systems. Zenodo, 2010.
 
+    \bibitem{railways-analysis-just-ter-beek}
+    M. H. ter Beek, \emph{Models for formal methods and tools: the case of railway systems}, Springer, 2025.
+    \url{https://doi.org/10.1007/s10270-025-01276-3}
+
+    \bibitem{railways-analysis-ter-beek-ferrari}
+    A. Ferrari, M. H. ter Beek, \emph{Formal Methods in Railways: A Systematic Mapping Study}, ACM Computing Surveys, Volume 55, Issue 4, 2022, https://doi.org/10.1145/3520480
   \end{thebibliography}
 \end{frame}
 
